@@ -1,0 +1,5 @@
+# Core dependencies
+Django
+psycopg2-binary
+
+python-dotenv

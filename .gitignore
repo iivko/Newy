@@ -1,0 +1,87 @@
+# ========================================
+# Python
+# ========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+*.env
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ========================================
+# Django
+# ========================================
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+/static_root/
+/*.log
+
+# Django migration files (optional to ignore)
+# If you want to keep migrations in version control, remove this:
+**/migrations/*.pyc
+**/migrations/__pycache__/
+# **/migrations/  ← Uncomment to ignore migration files completely
+
+# Secret settings (you should not commit secrets)
+secrets.json
+config/settings/local.py
+config/settings/dev.py
+
+# ========================================
+# PyCharm
+# ========================================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ========================================
+# Operating System
+# ========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ========================================
+# Others
+# ========================================
+coverage/
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+pytestdebug.log
