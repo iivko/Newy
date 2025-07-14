@@ -9,7 +9,7 @@ from django.conf import settings
     Main Routes
 """
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path(f"{settings.ADMIN_URL}", admin.site.urls),
     path("news/", include("app.urls")),
     path("", SignupView.as_view(), name="account_signup"),
     path("account/signup/", RedirectView.as_view(url="/")),
