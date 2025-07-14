@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 17:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: app/models.py:51
+msgid "User"
+msgstr "потребител"
+
+#: app/models.py:52
+msgid "Users"
+msgstr "потребители"
+
+#: app/models.py:55
+msgid "email"
+msgstr "имейл"
+
+#: app/models.py:62
+msgid "first name"
+msgstr "име"
+
+#: app/models.py:70
+msgid "last name"
+msgstr "фамилия"
+
+#: app/models.py:98
+msgid "New"
+msgstr "новина"
+
+#: app/models.py:99
+msgid "News"
+msgstr "новини"
+
+#: app/models.py:110
+msgid "title"
+msgstr "заглавие"
+
+#: app/models.py:117
+msgid "author"
+msgstr "автор"
+
+#: app/models.py:128
+msgid "facebook link"
+msgstr "facebook"
+
+#: app/models.py:134
+msgid "twitter link"
+msgstr "twitter"
+
+#: app/models.py:140
+msgid "linkedin link"
+msgstr "linkedin"
+
+#: app/models.py:147
+msgid "content"
+msgstr "съдаржание"
+
+#: app/models.py:155
+msgid "status"
+msgstr "статус"
+
+#: app/models.py:163
+msgid "created at"
+msgstr "създадено на"
+
+#: app/models.py:164
+msgid "updated at"
+msgstr "подновено на"
+
+#: app/models.py:166
+msgid "creator"
+msgstr "създател"

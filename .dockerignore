@@ -1,0 +1,35 @@
+    # Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Git
+.git/
+.gitignore
+
+# PyCharm project files
+.idea/
+
+# macOS & Windows system files
+.DS_Store
+Thumbs.db
+
+# Testing artifacts
+.coverage
+htmlcov/
+coverage.xml
+
+# Static and media files (optional, depending on your setup)
+staticfiles/
+media/
+
+# Logs (if your app writes them)
+*.log
+logs/

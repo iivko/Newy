@@ -25,6 +25,7 @@ ENV/
 .venv/
 .env/
 *.env
+.env.docker
 
 # pip
 pip-log.txt
@@ -40,11 +41,10 @@ db.sqlite3
 /static_root/
 /*.log
 
-# Django migration files (optional to ignore)
-# If you want to keep migrations in version control, remove this:
+
 **/migrations/*.pyc
 **/migrations/__pycache__/
-# **/migrations/  ← Uncomment to ignore migration files completely
+ **/migrations/
 
 # Secret settings (you should not commit secrets)
 secrets.json
@@ -85,3 +85,6 @@ htmlcov/
 .pytest_cache/
 .cache/
 pytestdebug.log
+
+node_modules
+staticfiles/

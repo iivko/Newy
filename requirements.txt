@@ -1,5 +1,12 @@
-# Core dependencies
 Django
 psycopg2-binary
-
 python-dotenv
+django-allauth[socialaccount]
+django-widget-tweaks
+django-anymail[mailgun]
+gunicorn
+whitenoise[brotli]
+
+# Development
+django-debug-toolbar
+django-browser-reload

@@ -1,0 +1,43 @@
+{% extends "app/layouts/base_form.html" %}
+
+{% block page %}Edit Page{% endblock page %}
+
+{% block news_stats %}
+    <p>Последно обновенa на <span class="font-bold">{{ new.updated_at | date:"jS F Y" }}</span></p>
+{% endblock news_stats %}
+
+{% block buttons %}
+<div class="flex justify-end gap-4">
+    <a hx-get="{% url 'delete_news' new.id %}" class="button danger" hx-target="#dialog" hx-select="main">Изтрий новина</a>
+    <button type="submit" class="button success">Запази</button>
+</div>
+{% endblock buttons %}
+
+
+{% block extra_body %}
+
+    <div id="modal" class="relative z-10 hidden">
+        <div class="bg-black/15 fixed inset-0"></div>
+
+        <div class="fixed inset-0 z-10 w-screen p-4">
+            <div id="dialog" class="max-w-lg mx-auto bg-white p-16 rounded-md shadow-lg"></div>
+        </div>
+
+    </div>
+
+{% endblock extra_body %}
+
+
+{% block page_js %}
+    {{ block.super }}
+
+<script type="application/javascript">
+    const modal = document.getElementById("modal");
+
+    htmx.on("htmx:afterSwap", function(e) {
+        if (e.detail.target.id == "dialog") {
+            modal.classList.toggle("hidden");
+        }
+    })
+</script>
+{% endblock page_js %}

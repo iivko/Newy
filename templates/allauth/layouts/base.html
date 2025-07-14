@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page %}Смяна на имейл{% endblock page %}
+
+{% block base_content %}
+<div>
+  <main class="max-w-xl mx-auto">
+    <div class="text-center bg-gray-800 text-white rounded-lg mt-10 p-6 lg:p-16">
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+  </main>
+</div>
+{% endblock base_content %}

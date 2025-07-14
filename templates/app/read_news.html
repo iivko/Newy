@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block page %}- Прочети своите новини{% endblock page %}
+
+{% block base_content %}
+<main class="max-w-7xl mx-auto mt-10 p-2 md:p-4 lg:p-10">
+    {% with user.news_count as news %}
+        <h1 class="title mb-4">Добре дошъл!</h1>
+
+        <p class="text-xl mb-4">
+            {{ news|intcomma }} създаден{% spaceless %}{% if news == 1 %}а{% else %}и{% endif %}{% endspaceless %} новин{% spaceless %}{% if news == 1 %}а{% else %}и{% endif %}.{% endspaceless %}
+        </p>
+    {% endwith %}
+
+    <a href="{% url 'create_news' %}" class="button success inline-block mb-6 w-full sm:w-auto text-center">Създай нова новина!</a>
+
+    <h2 class="subtitle mb-6">Вашите последни новини</h2>
+
+    <form method="GET" class="flex flex-col sm:flex-row gap-3 form-field">
+
+        <input
+                type="search" name="search" placeholder="Потърсете вашата новина" value="{{ request.GET.search }}"
+                class="text-black shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"
+                hx-get="{{ request.path }}"
+                hx-trigger="input changed delay:500ms, search"
+                hx-target="#news-results"
+                hx-select="#news-results"
+                hx-indicator="svg.loading"
+                hx-disabled-elt="next button"
+                hx-push-url="true"
+        >
+        <button type="submit" class="flex gap-1 button secondary items-center justify-center [&>.loading.htmx-request.hidden]:!inline-block [&>.loading.htmx-request]:hidden disabled:cursor-not-allowed disabled:opacity-50">
+            {% include "svgs/magnifier.svg" with class="loading w-6 h-6 mr-2" %}
+            {% include "svgs/loading.svg" with class="loading w-6 h-6 mr-2 hidden motion-safe:animate-spin" %}
+            Потърси
+        </button>
+
+        <a href="{{ request.path }}" class="button secondary text-center">Почисти</a>
+    </form>
+
+    <div id="news-results">
+        {% if news %}
+            <ul preload="mouseover">
+                {% for entry in news %}
+                    <li>
+                        <a href="{% url 'update_news' entry.id %}" class="text-2xl flex items-center">
+                            {{ entry.title }}
+                            <span class="ml-2 px-4 py-0.5 text-xs rounded-sm uppercase news-status-{{ entry.status }}">{{ entry.status }}</span>
+                        </a>
+                        <p class="text mb-1">Автор {{ entry.author }}.</p>
+                        {% if entry.facebook_link or entry.twitter_link or entry.linkedin_link %}
+                            <ul class="flex gap-2 mb-2">
+                                {% if entry.facebook_link %}
+                                    <li><span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                                        <a href="{{ entry.facebook_link }}">Facebook</a>
+                                    </span></li>
+                                {% endif %}
+
+                                {% if entry.twitter_link %}
+                                    <li><span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">
+                                        <a href="{{ entry.twitter_link }}">Twitter</a>
+                                    </span></li>
+                                {% endif %}
+
+                                {% if entry.linkedin_link %}
+                                    <li><span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                                        <a href="{{ entry.linkedin_link }}">LinkedIn</a>
+                                    </span></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if is_paginated %}
+
+                <div class="flex flex-row items-center justify-center text-xl mt-6">
+
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="mx-2">
+                            {% include "svgs/chevron.svg" with class="h-7 w-7 rotate-180 border border-black rounded-md p-1" %}
+                        </a>
+                    {% endif %}
+
+                    <span>Страница {{ page_obj.number }} от {{ paginator.num_pages }}</span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="mx-2">
+                            {% include "svgs/chevron.svg" with class="h-7 w-7 border border-black rounded-md p-1" %}
+                        </a>
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+        {% else %}
+            <p>Нямате създадени новини за момента.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock base_content %}

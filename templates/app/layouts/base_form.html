@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block page %}Create Page{% endblock page %}
+
+{% block base_content %}
+<main class="max-w-7xl mx-auto mt-10">
+    <form method="post" x-data="{
+        newsStatus: ''
+    }">
+        {% csrf_token %}
+
+        {% render_field form.title class="text-5xl w-full rounded-md border-1 border-gray-200 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 mb-2" placeholder="Напишете заглавието на своята новина" %}
+
+        {% render_field form.author class="text-2xl w-full rounded-md border-1 border-gray-200 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 mb-2" placeholder="Авторът на новината"  %}
+
+        <div class="flex gap-10 mb-10 items-center">
+            {% render_field form.status class="text-xs border-none rounded-sm uppercase" x-bind::class="`news-status-${newsStatus}`" x-model.fill="newsStatus" %}
+
+            {% block news_stats %}
+
+            {% endblock news_stats %}
+        </div>
+
+        <div class="flex flex-col items-center">
+            <h3 class="text-lg font-semibold text-center">Линкове</h3>
+            <div class="flex justify-center items-center gap-4">
+                <div class="p-2">{% render_field form.facebook_link class="rounded-md border-2 border-gray-200 focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Facebook" %}</div>
+                <div class="p-2">{% render_field form.twitter_link class="rounded-md border-2 border-gray-200 focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Twitter" %}</div>
+                <div class="p-2">{% render_field form.linkedin_link class="rounded-md border-2 border-gray-200 focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="LinkedIn" %}</div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <p class="text-xl font-semibold mb-2">{{ form.content.label }}</p>
+            {% render_field form.content rows=5 %}
+        </div>
+
+        {% block buttons %}
+
+        {% endblock buttons %}
+    </form>
+</main>
+{% endblock base_content %}
+
+{% block page_js %}
+<script>
+    const contentMarkdown = new EasyMDE({
+        element: document.getElementById("id_content"),
+        spellChecker: false,
+        status: false,
+        toolbar: false,
+        forceSync: true,
+        minHeight: "150px"
+    });
+</script>
+{% endblock page_js %}
