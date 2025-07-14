@@ -61,8 +61,4 @@ docker compose exec web python manage.py migrate
 
 # Create an admin user
 docker compose exec web python manage.py createsuperuser
-
-# Run the development server manually (optional)
-docker compose exec web python manage.py runserver 0.0.0.0:8000
-
 ```
