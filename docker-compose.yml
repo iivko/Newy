@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     env_file:
-      - ./.env.docker
+      - .env.example
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

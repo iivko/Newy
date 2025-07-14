@@ -25,7 +25,7 @@ ENV/
 .venv/
 .env/
 *.env
-.env.docker
+.env.example
 
 # pip
 pip-log.txt
