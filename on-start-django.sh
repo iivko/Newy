@@ -10,7 +10,7 @@ python manage.py migrate
 # Run the appropriate server
 if [[ "$ENV_STATE" == "production" ]]; then
     echo "Starting Gunicorn in production mode..."
-    exec gunicorn Newy.wsgi:application --workers "${GUNICORN_WORKERS:-3}" --forwarded-allow-ips="*"
+    exec gunicorn bloger.wsgi:application --workers "${GUNICORN_WORKERS:-3}" --forwarded-allow-ips="*"
 else
     echo "Starting Django development server..."
     exec python manage.py runserver 0.0.0.0:8000

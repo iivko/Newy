@@ -1,1 +1,1 @@
-web: gunicorn bloger.wsgi:application --bind 0.0.0.0:8080
+web: ./on-start-django.sh
