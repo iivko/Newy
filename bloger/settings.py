@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 ENV_STATE = os.getenv("ENV_STATE")
 
-load_dotenv()
+load_dotenv(dotenv_path=Path(".env"))
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
