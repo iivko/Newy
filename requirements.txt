@@ -10,3 +10,7 @@ whitenoise[brotli]
 # Development
 django-debug-toolbar
 django-browser-reload
+pytest
+pytest-django
+playwright
+pytest-playwright
